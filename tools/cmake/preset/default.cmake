@@ -60,6 +60,10 @@ define_overridable_option(
   "Build the Arm Baremetal flow for Cortex-M and Ethos-U" BOOL OFF
 )
 define_overridable_option(
+  EXECUTORCH_BUILD_RISCV_BAREMETAL
+  "Build the RISC-V 32-bit Baremetal flow" BOOL OFF
+)
+define_overridable_option(
   EXECUTORCH_BUILD_KERNELS_LLM "Build the custom kernels" BOOL OFF
 )
 define_overridable_option(
@@ -179,6 +183,9 @@ define_overridable_option(
 )
 
 if(EXECUTORCH_BUILD_ARM_BAREMETAL)
+  set(_default_executorch_build_pthreadpool OFF)
+  set(_default_executorch_build_cpuinfo OFF)
+elseif(EXECUTORCH_BUILD_RISCV_BAREMETAL)
   set(_default_executorch_build_pthreadpool OFF)
   set(_default_executorch_build_cpuinfo OFF)
 else()
@@ -383,6 +390,11 @@ check_required_options_on(
 
 check_conflicting_options_on(
   IF_ON EXECUTORCH_BUILD_ARM_BAREMETAL CONFLICTS_WITH
+  EXECUTORCH_BUILD_PTHREADPOOL EXECUTORCH_BUILD_CPUINFO
+)
+
+check_conflicting_options_on(
+  IF_ON EXECUTORCH_BUILD_RISCV_BAREMETAL CONFLICTS_WITH
   EXECUTORCH_BUILD_PTHREADPOOL EXECUTORCH_BUILD_CPUINFO
 )
 

@@ -544,6 +544,12 @@ if(EXECUTORCH_BUILD_ARM_BAREMETAL)
   list(APPEND _executorch_backends executorch_delegate_ethos_u)
 endif()
 
+if(EXECUTORCH_BUILD_RISCV_BAREMETAL)
+  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/backends/riscv)
+  #list(APPEND _executorch_backends riscv_backend)
+  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/examples/riscv/executor_runner)
+endif()
+
 if(EXECUTORCH_BUILD_CADENCE)
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/backends/cadence)
 endif()
