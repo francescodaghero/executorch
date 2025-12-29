@@ -271,7 +271,7 @@
         "inherits": ["common"],
         "cacheVariables": {
             "EXECUTORCH_BUILD_PRESET_FILE": "${sourceDir}/tools/cmake/preset/riscv_baremetal.cmake",
-            "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/examples/riscv/riscv-unknown-elf-gcc.cmake"
+            "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/examples/riscv/riscv32-unknown-elf-gcc.cmake"
           }
     }
   ],

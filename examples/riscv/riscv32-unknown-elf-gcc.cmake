@@ -36,18 +36,8 @@ add_compile_definitions("$<$<NOT:$<CONFIG:DEBUG>>:NDEBUG>")
 
 # Link options
 add_link_options(-march=${GCC_CPU})
+set(FLOAT soft)
 
-# Set floating point unit
-if(CMAKE_SYSTEM_PROCESSOR MATCHES "\\+nofp")
-  set(FLOAT soft)
-else()
-  set(FLOAT hard)
-endif()
-
-if(FLOAT)
-  add_compile_options(-mfloat-abi=${FLOAT})
-  add_link_options(-mfloat-abi=${FLOAT})
-endif()
 
 add_link_options(LINKER:--nmagic,--gc-sections)
 

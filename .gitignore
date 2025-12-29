@@ -20,6 +20,7 @@ build-android/
 build-x86/
 dist/
 arm-scratch/
+riscv-scratch/
 executorch.egg-info
 pip-out/
 build-profiling/
